@@ -1,0 +1,259 @@
+:root{
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC260;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3; 
+}
+
+/* Globales */
+html{
+    font-size: 62%;
+    box-sizing: border-box; /* hack para box model*/
+}
+
+*, *:before, *:after { /* el poner ',' significa que tiene otro elemento o clase que tendra las mismas propiedades de la funcion*/
+    box-sizing: inherit;
+  }
+/*:before y :after se consideran seudoelementos, suelen usarlos algunos desarrolladores */
+  /* '*' selecciona todos los elementos de html */
+
+body{ /*Lo que apliquemos aqui, se lo aplicara a todo el documento*/
+    font-size: 16px; /*1rem = 10 px*/
+    font-family: 'Krub', sans-serif; /*se lo va a aplicar a todos los elementos del body*/
+    background-image: linear-gradient(to top, var(--grisClaro)  0%, var(--blanco) 100%);
+}
+
+.contenedor{
+    max-width: 120rem;/*toma el ancho de 1200 px si es posible, si no tomo el max posible*/
+    /*margin-top: 0; margin nos sirve para poner el margen de nuestro documento
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;*/
+    /*margin: 0 auto 0 auto;(podemos usar esta forma para repetir lo de arriba o*/
+    margin: 0 auto;  /*ya que css persive el patron de 0 auto 0 auto*/
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1.8rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 1rem;
+    width: 90%;
+    text-align: center;
+    border: none;   
+
+}
+@media (min-width: 760px)  {
+     .boton{
+        width: auto;
+     }
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(153,153,153,0.6);
+    background-color: var(--blanco);
+    border-radius: 1rem;
+}
+/* Tipografia */
+h1 {
+    font-size: 3.8rem;
+   
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+
+/* titulos */
+.titulo span{
+    font-size: 2rem;
+}
+
+/*utilidades*/
+
+.w-sh-100{
+    width: 100%;
+}
+
+@media (min-width: 760px)  {
+     .w-sh-100{
+        width: auto;
+     }
+}
+
+
+
+/* navegacion principal */
+
+.nav_bg{
+    background-color: var(--secundario);
+}
+
+.navegacion_principal{
+
+    padding: 2rem; /*lo que hace pading es engordar, osea como el margin pero desde adentro hacia afuera*/
+    display: flex; /*habilita flexbox para acceder a mas propiedades*/ 
+    flex-direction: column; /*asi mostraremos de arriba hacia abajo*/
+
+    
+}
+
+@media (min-width: 760px)  {    /*esta parte servira para controlar el contenedor de la barra principal*/
+    .navegacion_principal{  /*aqui se ve un ejemplo de heredacion*/
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+.navegacion_principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;/*grosor*/
+    padding: 1rem;
+}
+
+.navegacion_principal a:hover{ /*hover esta predeterminado ya como una clase*/
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* Hero */
+
+.hero{
+    background-image: url(../img/hero.jpg); /*lo que hacemos es poner la ubicacion de la imagen que queramos poner*/
+    /*por default todas las imagenes con esta propiedad se suelen repetir a lo largo de la ubicacion que esta, pero para eso usar*/
+    background-repeat: no-repeat;
+    background-size: cover;/*la imagen toma todo el ancho disponible*/
+    height: 450px;
+    position: relative; /*el padre siempre debe tener posicion relativa para que el hijo se pueda posicionar de forma absoluta*/
+    margin-bottom: 2rem;
+}
+
+.contenido-hero{ /*esta seccion es del sombreado*/
+    position: absolute;
+    background-color: rgba(0,0,0, .5); /*rgb'a' sirve para transparencia, alpha channel*/
+    background-color: rgb( 0 0 0 / 50% ); /*es lo mismo*/
+    /*se puede hacer de 2 formas una es esta, pero no debemos de tener padding en la imagen, la otra es poner left:0, right:0 botton:0 y top:0 en esta no importa el padding*/
+    width: 100%;
+    height: 100%;
+    /*alinear vertical y horizontal aqui--*/
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*sirve para alinear horizontalmente*/
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+    color: var(--blanco);
+}
+
+.ubicacion{
+    display: flex;
+    align-items: center;
+}
+
+/*Servicios*/
+
+@media (min-width: 760px)  {
+    .servicios{
+
+        display: grid; /*como en flexbox aqui se agregan propiedades, pero ahora de CSS Grid puedes trabajar en 2 dimensiones*/
+        /*grid-template-columns: 300px 300px;
+        grid-template-rows: 200px 800px;*/
+        /*grid: 200px 800px / 300px 300px; /* es lo mismo que arriba */
+        grid-template-columns: repeat(3, 1fr); /* es lo mismo 1fr 1fr 1fr; /* fr se ustiliza para decir que es una fraccion*/
+        column-gap: 1.2rem;
+    }
+}
+
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--secundario);
+    font-weight: normal
+}
+
+.servicio p{
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem; 
+    background-color: var(--primario);
+    border-radius: 50%; /*aqui el 50% hace un circulo perfecto*/
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+/* Tablas*/
+
+.tabla h2{
+    color: var(--oscuro);
+    font-weight: 700;
+}
+
+.tabla{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabla .imagen{
+    height: 15rem;
+    width: 15rem; 
+    background-color: var(--primario);
+    border-radius: 50%; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; 
+    
+}
+
+@media (min-width: 760px)  {
+    .tablas{
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        column-gap: 1.2rem;
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+:root{
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC260;
+    --secundario: #022bb2;
+}
+
+
+html{
+    font-size: 62%;
+    box-sizing: border-box; /* hack para box model*/
+}
+
+.nav_bg{
+    background-color: var(--secundario);
+    
+}
+
+.navegacion_principal{
+    padding: 2rem; 
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.navegacion_principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.navegacion_principal a:hover{ 
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;  
+}
+
+@media (min-width: 760px)  {    
+    .navegacion_principal{  
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
